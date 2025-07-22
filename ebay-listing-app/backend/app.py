@@ -9,7 +9,7 @@ app = Flask(__name__)
 @app.route('/parse', methods=['POST'])
 def parse_csv():
     """
-    Parses a CSV file provided by the frontend and returns the data as JSON.
+    Parses a CSV file provided by the frontend and returns the data as JSON. 
 
     Args:
         None
@@ -26,14 +26,14 @@ def parse_csv():
         # Define the required columns
         required_columns = [
             'Action(SiteID=US|Country=US|Currency=USD|Version=941)',
-            'Category ID',
-            'Custom Label (SKU)',
+            'Category ID', #Category ID
+            'Custom Label (SKU)', #SKU NUMBER
             'Relationship',
             'Relationship details',
             'P:UPC',
-            'Quantity',
-            'Start Price',
-            'Item photo URL.',
+            'Quantity',# Quantity 
+            'Start Price', #Listing price
+            'Item photo URL.', #Listing photo's
             'P:EAN',
             'P:EPID',
         ]
@@ -43,7 +43,7 @@ def parse_csv():
         if 'error' in parsed_data:
             return jsonify({'error': parsed_data['error']}), 400
 
-        return jsonify(parsed_data), 200
+        return jsonify(parsed_data), 200 
 
     except Exception as e:
         return jsonify({'error': f'Error during parsing: {e}'}), 500
